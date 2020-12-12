@@ -110,7 +110,7 @@ Resources:
             - "0.0.0.0"
           Memory: 512
           MountPoints:
-            - SourceVolume: my-vol
+            - SourceVolume: myapp
               ContainerPath: /myapp
           PortMappings:
             - ContainerPort: 80
@@ -124,7 +124,7 @@ Resources:
           PortMappings:
             - ContainerPort: 5432
       Volumes:
-        - Name: my-vol
+        - Name: myapp
 
   SecurityGroupALB:
     Type: "AWS::EC2::SecurityGroup"

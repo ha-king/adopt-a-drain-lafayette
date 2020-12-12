@@ -5,3 +5,5 @@ WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
+EXPOSE 80
+CMD bundle exec rails s -p 80 -b '0.0.0.0'
