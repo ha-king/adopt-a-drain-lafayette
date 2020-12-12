@@ -6,4 +6,4 @@ ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 EXPOSE 80
-ENTRYPOINT ["sh", "./entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]
