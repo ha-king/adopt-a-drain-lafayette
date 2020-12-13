@@ -99,7 +99,7 @@ Resources:
         - Name: !Ref RepositoryName
           Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepositoryName}"
           Essential: true
-          Memory: 512
+          Memory: 2048
           MountPoints:
             - SourceVolume: myapp
               ContainerPath: /myapp

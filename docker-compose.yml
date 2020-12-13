@@ -4,11 +4,12 @@ services:
     image: postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
+      DB_HOST: "db"
   web:
     build: .
     volumes:
       - .:/myapp
     ports:
-      - "3000:3000"
+      - "80:80"
     depends_on:
       - db
