@@ -100,13 +100,6 @@ Resources:
           Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepositoryName}"
           Essential: true
           Memory: 4096
-          EntryPoint:
-            - "rails"
-            - "s"
-            - "-p"
-            - "80"
-            - "-b"
-            - "0.0.0.0"
           MountPoints:
             - SourceVolume: myapp
               ContainerPath: /myapp
