@@ -99,12 +99,15 @@ Resources:
         - Name: !Ref RepositoryName
           Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepositoryName}"
           Essential: true
-          Memory: 2048
+          Memory: 4096
           MountPoints:
             - SourceVolume: myapp
               ContainerPath: /myapp
           PortMappings:
             - ContainerPort: 80
+          Environment:
+            - Name: POSTGRES_HOST_AUTH_METHOD
+              Value: trust
         - Name: postgres
           Image: postgres
           Essential: true
@@ -112,8 +115,7 @@ Resources:
           Environment:
             - Name: POSTGRES_HOST_AUTH_METHOD
               Value: trust
-          PortMappings:
-            - ContainerPort: 5432
+
       Volumes:
         - Name: myapp
 
@@ -240,6 +242,7 @@ Resources:
                   - /etc/cfn/hooks.d/cfn-auto-reloader.conf
     Properties:
       ImageId: !FindInMap [ AWSRegionToAMI, !Ref "AWS::Region", AMI ]
+      KeyName: key-us-east-1
       InstanceType: !Ref InstanceType
       IamInstanceProfile: !Ref InstanceProfile
       SecurityGroups:
