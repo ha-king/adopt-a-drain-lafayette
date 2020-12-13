@@ -119,6 +119,8 @@ Resources:
               Value: trust
             - Name: DB_HOST
               Value: db
+            - Name:  DB_USER
+              Value: postgres
         - Name: db
           Image: postgres
           Essential: true
