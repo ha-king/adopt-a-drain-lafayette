@@ -117,7 +117,7 @@ Resources:
           Environment:
             - Name: POSTGRES_HOST_AUTH_METHOD
               Value: trust
-            - Name: PG_HOST
+            - Name: DB_HOST
               Value: db
         - Name: db
           Image: postgres
@@ -126,6 +126,8 @@ Resources:
           Environment:
             - Name: POSTGRES_HOST_AUTH_METHOD
               Value: trust
+          PortMappings:
+            - ContainerPort: 5432
 
       Volumes:
         - Name: myapp
