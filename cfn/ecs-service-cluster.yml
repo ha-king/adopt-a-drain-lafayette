@@ -14,7 +14,7 @@ Parameters:
     Default: ecs-workshop-shared-resources
   InstanceType:
     Type: String
-    Default: t2.small
+    Default: t2.large
 
 Mappings:
   AWSRegionToAMI:
@@ -192,7 +192,7 @@ Resources:
       LaunchConfigurationName: !Ref LaunchConfiguration
       MinSize: 0
       MaxSize: 4
-      DesiredCapacity: 3
+      DesiredCapacity: 1
       Tags: 
         - Key: Name
           Value: !Sub ${AWS::StackName} - ECS Host
