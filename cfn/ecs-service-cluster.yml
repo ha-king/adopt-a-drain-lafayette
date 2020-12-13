@@ -101,8 +101,6 @@ Resources:
           Essential: true
           Memory: 4096
           EntryPoint:
-            - "bundle"
-            - "exec"
             - "rails"
             - "s"
             - "-p"
