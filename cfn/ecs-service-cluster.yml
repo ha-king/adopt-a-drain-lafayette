@@ -115,6 +115,8 @@ Resources:
           Environment:
             - Name: POSTGRES_HOST_AUTH_METHOD
               Value: trust
+            - Name: PG_HOST
+              Value: db
         - Name: postgres
           Image: postgres
           Essential: true
