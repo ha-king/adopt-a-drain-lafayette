@@ -14,7 +14,7 @@ Parameters:
     Default: ecs-workshop-shared-resources
   InstanceType:
     Type: String
-    Default: t2.large
+    Default: t2.small
 
 Mappings:
   AWSRegionToAMI:
@@ -99,7 +99,7 @@ Resources:
         - Name: !Ref RepositoryName
           Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepositoryName}"
           Essential: true
-          Memory: 4096
+          Memory: 512
           MountPoints:
             - SourceVolume: myapp
               ContainerPath: /myapp
