@@ -1,4 +1,4 @@
-# Adopt-a-Drain
+# Adopt-a-Drain Lafayette
 
 [![Join the chat at https://gitter.im/sfbrigade/adopt-a-drain](https://badges.gitter.im/sfbrigade/adopt-a-drain.svg)](https://gitter.im/sfbrigade/adopt-a-drain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -17,9 +17,9 @@ Claim responsibility for cleaning out a storm drain after it rains.
 
 ## Demo
 You can see a running version of the application at
-[http://adopt-a-drain.herokuapp.com/][demo].
+[http://adopt-a-drain.infascination.com/][demo].
 
-[demo]: http://adopt-a-drain.herokuapp.com/
+[demo]: http://adopt-a-drain.infascination.com/
 
 ## Installation
 This application requires [Postgres](http://www.postgresql.org/) to be installed
