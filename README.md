@@ -1,15 +1,5 @@
 # Adopt-a-Drain Lafayette
 
-[![Join the chat at https://gitter.im/sfbrigade/adopt-a-drain](https://badges.gitter.im/sfbrigade/adopt-a-drain.svg)](https://gitter.im/sfbrigade/adopt-a-drain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Build Status](http://img.shields.io/travis/sfbrigade/adopt-a-drain.svg)][travis]
-[![Dependency Status](http://img.shields.io/gemnasium/sfbrigade/adopt-a-drain.svg)][gemnasium]
-[![Coverage Status](http://img.shields.io/coveralls/sfbrigade/adopt-a-drain.svg)][coveralls]
-
-[travis]: http://travis-ci.org/sfbrigade/adopt-a-drain
-[gemnasium]: https://gemnasium.com/sfbrigade/adopt-a-drain
-[coveralls]: https://coveralls.io/r/sfbrigade/adopt-a-drain
-
 Claim responsibility for cleaning out a storm drain after it rains.
 
 ## Screenshot
@@ -62,41 +52,6 @@ docker-compose up
 
 ## Seed Data
     bundle exec rake data:load_drains
-
-## Deploying to Heroku
-A successful deployment to Heroku requires a few setup steps:
-
-1. Generate a new secret token:
-
-    ```
-    rake secret
-    ```
-
-2. Set the token on Heroku:
-
-    ```
-    heroku config:set SECRET_TOKEN=the_token_you_generated
-    ```
-
-3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
-
-    ```
-    RAILS_ENV=production bundle exec rake assets:precompile
-
-    git add public/assets
-
-    git commit -m "vendor compiled assets"
-    ```
-
-4. Add a production database to config/database.yml
-
-5. Seed the production db:
-
-    `heroku run bundle exec rake db:seed`
-
-Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows,
-so if your city has more than 10,000 fire drains (or other thing to be
-adopted), you will need to upgrade to the $9/month plan.
 
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your
