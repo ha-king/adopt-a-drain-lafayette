@@ -15,6 +15,9 @@ Parameters:
   InstanceType:
     Type: String
     Default: t2.small
+  SendgridPassword:
+    Description: Password for Sendgrid email service.
+    Type: String
 
 Mappings:
   AWSRegionToAMI:
@@ -114,6 +117,12 @@ Resources:
               Value: db
             - Name:  DB_USER
               Value: postgres
+            - Name: SENDGRID_USERNAME
+              Value: apikey
+            - Name: SENDGRID_PASSWORD
+              Value: !Ref SendgridPassword
+            - Name: SENDGRID_DOMAIN
+              Value: "adopt-a-drain.infascination.com"
         - Name: db
           Image: postgres
           Essential: true
