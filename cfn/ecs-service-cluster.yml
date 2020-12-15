@@ -18,6 +18,7 @@ Parameters:
   SendgridPassword:
     Description: Password for Sendgrid email service.
     Type: String
+    NoEcho: True
 
 Mappings:
   AWSRegionToAMI:
