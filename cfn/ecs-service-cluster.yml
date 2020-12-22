@@ -123,7 +123,7 @@ Resources:
             - Name: SENDGRID_PASSWORD
               Value: !Ref SendgridPassword
             - Name: SENDGRID_DOMAIN
-              Value: "adopt-a-drain.infascination.com"
+              Value: "infascination.com"
         - Name: db
           Image: postgres
           Essential: true
