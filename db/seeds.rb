@@ -18,8 +18,8 @@ r = Random.new
 500.times do |i|
   Thing.where(city_id: i).first_or_initialize.tap do |thing|
     thing.name = "Some Drain #{i}"
-    thing.lat = r.rand(30.19..30.22)
-    thing.lng = r.rand(-90.01..-92.02)
+    thing.lat = r.rand(30.19..31.02)
+    thing.lng = r.rand(-92.02..-90.01)
     thing.system_use_code = ['MS4', 'STORM', 'COMB', 'UNK'].sample
     thing.priority = [true, false].sample
     thing.save!
