@@ -51,12 +51,12 @@ Rails.application.configure do
 
   # For Mailcatcher
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {address: 'adopt-a-drain.infascination.com', port: 1025}
+  config.action_mailer.smtp_settings = {address: 'adopt-a-drain.infascination.com', port: 25}
 end
 
 ActionMailer::Base.smtp_settings = {
   address: 'smtp.sendgrid.net',
-  port: '587',
+  port: '25',
   authentication: :plain,
   user_name: ENV['SENDGRID_USERNAME'],
   password: ENV['SENDGRID_PASSWORD'],
