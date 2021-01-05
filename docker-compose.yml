@@ -14,9 +14,5 @@ services:
       - "80:80"
       - "587:587"
       - "25:25"
-    environment:
-      SENDGRID_USERNAME: "apikey"
-      SENDGRID_DOMAIN: "infascination.com"
-      SENDGRID_PASSWORD: "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"
     depends_on:
       - db
