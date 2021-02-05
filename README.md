@@ -88,12 +88,12 @@ This application will be deployed on EC2 Autoscaling Group nodes working behind 
 
 Create shared resources:
 ```
-aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cloudformation_templates/shared_resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="adopt-a-drain"
+aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cfn/shared_resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="adopt-a-drain"
 ```
 
 Create ECS resources:
 ```
-aws cloudformation deploy --stack-name adopt-a-drain-app --template-file cloudformation_templates/application.yml --parameter-overrides SharedResourceStack="adopt-a-drain-shared"
+aws cloudformation deploy --stack-name adopt-a-drain-app --template-file cfn/application.yml --parameter-overrides SharedResourceStack="adopt-a-drain-shared"
 ```
 
 ## Usage
