@@ -11,7 +11,7 @@ You can see a running version of the application at
 
 [demo]: http://adopt-a-drain.infascination.com/
 
-## Installation
+## Installation (Host) - Local
 This application requires [Postgres](http://www.postgresql.org/) to be installed
 
     git clone git://github.com/sfbrigade/adopt-a-drain.git
@@ -23,7 +23,7 @@ This application requires [Postgres](http://www.postgresql.org/) to be installed
 
 See the [wiki](https://github.com/sfbrigade/adopt-a-drain/wiki/Windows-Development-Environment) for a guide on how to install this application on Windows.
 
-## Docker
+## Install (Docker) - Local
 
 To setup a local development environment with
 [Docker](https://docs.docker.com/engine/installation/).   
@@ -37,14 +37,62 @@ echo DB_USER=postgres >> .env
 docker-compose run --rm web bundle exec rake db:setup
 
 # Load data:
-docker-compose run --rm web bundle exec rake data:load_things
+#docker-compose run --rm web bundle exec rake data:load_things
 # OR: don't load all that data, and load the seed data:
-# docker-compose run --rm web bundle exec rake db:seed
+docker-compose run --rm web bundle exec rake db:seed
 
 # Start the web server:
 docker-compose up
 
-# Visit your website http://localhost:3000 (or the IP of your docker-machine)
+# Visit your website http://localhost (or the IP of your docker-machine)
+```
+
+---
+## Deploy on AWS (US-EAST-1 Region Only)
+
+This application is deployed using AWS CloudFormation.
+
+#### Shared Resources - CloudFormation Parameters: (required)
+* DockerhubPassword
+* DockerhubUsername
+* RepositoryName
+* WorkshopName
+* GitHubRepo
+* GitHubBranch
+* GitHubToken (never commit this value)
+* GitHubUser
+
+##### This solution require Shared Resource stack to be deployed as primary stack, then Applicaiton stack.
+
+#### Application Resources - CloudFormation Parameters: (required)
+* RepositoryName      
+* SharedResourceStack
+* InstanceType
+* SendgridPassword
+* CertificateARN
+* HostedZoneId
+* Domain
+* Subdomain
+
+| Order   |Stacks          |Deploy|
+|---------|----------------|------|
+| 1       |Shared Resources| <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=adopt-a-drain-shared&templateURL=https://infascination-public-virginia.s3.amazonaws.com/shared_resources.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
+| 2       |Application     |<a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=ghc-workshop-application&templateURL=https://infascination-public-virginia.s3.amazonaws.com/ecs-service-cluster.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
+---
+#### AWS-CLI Deployment scenarios:
+* Local bash terminal
+* <a href="https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2">Cloud9</a> (us-east-1)
+
+This application will be deployed on EC2 Autoscaling Group nodes working behind an Application Load Balancer. It can be used as an example application in a workshop, with multiple stacks in the same account.
+
+Create shared resources:
+```
+aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cloudformation_templates/shared_resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="ghc-workshop"
+```
+
+Create ECS resources:
+```
+aws cloudformation deploy --stack-name adopt-a-drain-app --template-file cloudformation_templates/application.yml --parameter-overrides SharedResourceStack="adopt-a-drain-shared"
 ```
 
 ## Usage
