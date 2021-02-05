@@ -3,7 +3,7 @@
     .sidebar
       .navbar.navbar-default
         %a{href: root_url}
-          = image_tag "logos/LCG-logo-adopt-2.png", :alt => t("titles.main", :thing => t("defaults.thing").titleize), :title => t("titles.main", :thing => t("defaults.thing").titleize)
+          = image_tag "logos/cfa.jpg", :alt => t("titles.main", :thing => t("defaults.thing").titleize), :title => t("titles.main", :thing => t("defaults.thing").titleize)
         %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
@@ -36,12 +36,6 @@
               = t("defaults.tagline")
         #logos
           .row
-            .col-xs-4
-              %a{:href => "https://lafayettela.gov/"}
-                = image_tag "logos/Lafayette-Consolidated-Govt.png", :alt => t("sponsors.sfpuc"), :title => t("sponsors.sfpuc"), :class => "puc"
-            .col-xs-4
-              %a{:href => "https://www.facebook.com/projectfrontyard/"}
-                = image_tag "logos/project-front-yard.jpg", :alt => t("sponsors.sfpw"), :title => t("sponsors.sfpw"), :class => "dpw"
             .col-xs-4
               %a{:href => "http://codeforamerica.org/"}
                 = image_tag "logos/cfa.jpg", :alt => t("sponsors.cfa"), :title => t("sponsors.cfa"), :class => "cfa"
