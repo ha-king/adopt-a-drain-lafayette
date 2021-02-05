@@ -24,7 +24,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {host: 'adopt-a-drain.infascination.com'}
+  config.action_mailer.default_url_options = {host: 'infascination.com'}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -52,6 +52,14 @@ Rails.application.configure do
   # For Mailcatcher
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {address: 'adopt-a-drain.infascination.com', port: 25}
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '25',
+    authentication: :plain,
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: ENV['SENDGRID_DOMAIN'],
+  }
 end
 
 ActionMailer::Base.smtp_settings = {

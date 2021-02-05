@@ -1,5 +1,5 @@
 Description: >
-  Create ECS service and cluster resources for simple application.
+  Create ECS service and cluster resources for Adopt-a-Drain application.
 
 Parameters:
   RepositoryName:
