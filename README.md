@@ -48,7 +48,8 @@ docker-compose up
 ```
 
 ---
-## Deploy on AWS (US-EAST-1 Region Only)
+## Deploy on AWS
+#### (US-EAST-1 Region Only)
 
 This application is deployed using AWS CloudFormation.
 
@@ -77,11 +78,11 @@ This application is deployed using AWS CloudFormation.
 | Order   |Stacks          |Deploy|
 |---------|----------------|------|
 | 1       |Shared Resources| <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=adopt-a-drain-shared&templateURL=https://infascination-public-virginia.s3.amazonaws.com/shared_resources.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
-| 2       |Application     |<a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=ghc-workshop-application&templateURL=https://infascination-public-virginia.s3.amazonaws.com/ecs-service-cluster.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
+| 2       |Application     |<a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=adopt-a-drain-app&templateURL=https://infascination-public-virginia.s3.amazonaws.com/ecs-service-cluster.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
 ---
 #### AWS-CLI Deployment scenarios:
 * Local bash terminal
-* <a href="https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2">Cloud9</a> (us-east-1)
+* <a href="https://us-east-1.console.aws.amazon.com/cloud9/home?region=us-east-1">Cloud9</a> (us-east-1)
 
 This application will be deployed on EC2 Autoscaling Group nodes working behind an Application Load Balancer. It can be used as an example application in a workshop, with multiple stacks in the same account.
 
