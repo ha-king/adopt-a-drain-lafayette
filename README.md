@@ -88,7 +88,7 @@ This application will be deployed on EC2 Autoscaling Group nodes working behind 
 
 Create shared resources:
 ```
-aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cloudformation_templates/shared_resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="ghc-workshop"
+aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cloudformation_templates/shared_resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="adopt-a-drain"
 ```
 
 Create ECS resources:
