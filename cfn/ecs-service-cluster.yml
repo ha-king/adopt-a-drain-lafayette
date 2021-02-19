@@ -141,6 +141,12 @@ Resources:
               ContainerPath: /myapp
           PortMappings:
             - ContainerPort: 80
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref CloudWatchLogsGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: rails-app
           Links:
             - db
           Environment:
@@ -167,6 +173,12 @@ Resources:
               Value: trust
           PortMappings:
             - ContainerPort: 5432
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref CloudWatchLogsGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: postgres
 
       Volumes:
         - Name: myapp
