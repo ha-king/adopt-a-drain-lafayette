@@ -144,7 +144,7 @@ Resources:
           LogConfiguration:
             LogDriver: awslogs
             Options:
-              awslogs-group: !Ref CloudWatchLogsGroup
+              awslogs-group: adopt-a-drain
               awslogs-region: !Ref AWS::Region
               awslogs-stream-prefix: rails-app
           Links:
@@ -176,7 +176,7 @@ Resources:
           LogConfiguration:
             LogDriver: awslogs
             Options:
-              awslogs-group: !Ref CloudWatchLogsGroup
+              awslogs-group: adopt-a-drain
               awslogs-region: !Ref AWS::Region
               awslogs-stream-prefix: postgres
 
