@@ -433,6 +433,8 @@ Resources:
             Value: !Ref DockerhubUsername
           - Name: DOCKERHUB_PASSWORD
             Value: !Ref DockerhubPassword
+          - Name: RAILS_ENV
+            Value: staging
       Name: !Sub ${RepositoryName}-codebuildproject
       ServiceRole: !Ref CodeBuildServiceRole
 

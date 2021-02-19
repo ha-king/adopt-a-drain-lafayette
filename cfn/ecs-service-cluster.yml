@@ -141,8 +141,6 @@ Resources:
               ContainerPath: /myapp
           PortMappings:
             - ContainerPort: 80
-            - ContainerPort: 587
-            - ContainerPort: 25
           Links:
             - db
           Environment:
