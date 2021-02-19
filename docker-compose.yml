@@ -12,7 +12,5 @@ services:
       - .:/myapp
     ports:
       - "80:80"
-      - "587:587"
-      - "25:25"
     depends_on:
       - db
