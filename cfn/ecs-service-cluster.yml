@@ -163,7 +163,7 @@ Resources:
             - Name: SENDGRID_DOMAIN
               Value: "infascination.com"
             - Name: RAILS_ENV
-              Value: "staging"
+              Value: "test"
         - Name: db
           Image: postgres
           Essential: true
