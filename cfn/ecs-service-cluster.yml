@@ -162,8 +162,6 @@ Resources:
               Value: !Ref SendgridPassword
             - Name: SENDGRID_DOMAIN
               Value: "infascination.com"
-            - Name: RAILS_ENV
-              Value: "staging"
         - Name: db
           Image: postgres
           Essential: true
