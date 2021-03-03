@@ -31,6 +31,14 @@ Parameters:
   Subdomain:
     Description: The subdomain value
     Type: String
+  RubyMemory:
+    Description: Memory value for the Ruby on Rail app
+    Type: String
+    Default: 1024
+  PostgresMemory:
+    Description: Memory value for the PostgreSQL DB
+    Type: String
+    Default: 512
 
 Mappings:
   AWSRegionToAMI:
@@ -135,7 +143,7 @@ Resources:
         - Name: !Ref RepositoryName
           Image: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${RepositoryName}"
           Essential: true
-          Memory: 1024
+          Memory: !Ref RubyMemory
           MountPoints:
             - SourceVolume: myapp
               ContainerPath: /myapp
@@ -167,7 +175,7 @@ Resources:
         - Name: db
           Image: postgres
           Essential: true
-          Memory: 512
+          Memory: !Ref PostgresMemory
           Environment:
             - Name: POSTGRES_HOST_AUTH_METHOD
               Value: trust
