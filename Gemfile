@@ -14,6 +14,7 @@ gem 'pg'
 gem 'rails', '~> 5.2.3'
 gem 'rails_admin', '~> 2.0'
 gem 'validates_formatting_of', '~> 0.9.0'
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
 gem 'paranoia', '~> 2.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw]
