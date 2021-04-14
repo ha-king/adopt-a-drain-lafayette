@@ -1,4 +1,4 @@
-FROM ruby:2.5.0
+FROM ruby:2.6.3
 ENV RAILS_ENV=""
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /myapp
