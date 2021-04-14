@@ -5,6 +5,7 @@ RUN mkdir /myapp
 WORKDIR /myapp
 ADD Gemfile /myapp/Gemfile
 ADD Gemfile.lock /myapp/Gemfile.lock
+RUN gem install bundler
 RUN bundle config --local build.sassc --disable-march-tune-native
 RUN bundle install
 COPY . /myapp
