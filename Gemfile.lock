@@ -275,7 +275,7 @@ DEPENDENCIES
   paranoia (~> 2.4)
   pg
   puma
-  rails (~> 5.2.3)
+  rails (~> 5.2.5)
   rails-controller-testing
   rails_12factor
   rails_admin (~> 2.0)
