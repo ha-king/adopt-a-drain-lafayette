@@ -11,7 +11,6 @@ Parameters:
 
   DockerhubUsername:
     Type: String
-    Default: dpradinf
 
   GitHubRepo:
     Type: String
@@ -26,7 +25,6 @@ Parameters:
 
   GitHubUser:
     Type: String
-    Default: dpradinf
 
   RepositoryName:
     Description: Amazon ECR repository name

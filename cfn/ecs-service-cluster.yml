@@ -5,16 +5,17 @@ Parameters:
   RepositoryName:
     Description: Amazon ECR repository name
     Type: String
+    Default: adopt-a-drain-lafayette
   SharedResourceStack:
     Description: Name of an active CloudFormation stack that contains the shared workshop resources, such as the VPC.
     Type: String
     MinLength: 1
     MaxLength: 255
     AllowedPattern: "^[a-zA-Z][-a-zA-Z0-9]*$"
-    Default: adopt-a-drain-shared
+    Default: adopt-a-drain-lafayette-shared
   InstanceType:
     Type: String
-    Default: t2.small
+    Default: t3.medium
   SendgridPassword:
     Description: Password for Sendgrid email service.
     Type: String
@@ -28,17 +29,19 @@ Parameters:
   Domain:
     Description: The root domain value
     Type: String
+    Default: tutorials.infascination.com.
   Subdomain:
     Description: The subdomain value
     Type: String
+    Default: adopt-a-drain-lafayette.tutorials.infascination.com.
   RubyMemory:
-    Description: Memory value for the Ruby on Rail app
+    Description: Memory value for the Ruby on Rails app
     Type: String
-    Default: 1024
+    Default: 1900
   PostgresMemory:
     Description: Memory value for the PostgreSQL DB
     Type: String
-    Default: 512
+    Default: 1900
 
 Mappings:
   AWSRegionToAMI:
