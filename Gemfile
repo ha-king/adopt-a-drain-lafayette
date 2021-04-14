@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 ruby '2.6.3'
 
 gem 'airbrake', '~> 10.0'
-gem 'bundler', '~> 1.17.2'
+gem 'bundler', '~> 2.2.16'
 gem 'devise', '~> 4.7'
 gem 'geokit', '~> 1.13'
 gem 'haml', '~> 5.1'
