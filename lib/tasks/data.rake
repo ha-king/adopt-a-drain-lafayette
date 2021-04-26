@@ -1,42 +1,53 @@
-# frozen_string_literal: true
-
 require 'rake'
 
 namespace :data do
-  task load_things: :environment do
-    require 'thing_importer'
+  require 'open-uri'
+  require 'csv'
+  require 'json'
 
-    ThingImporter.load('https://data.sfgov.org/api/views/jtgq-b7c5/rows.csv?accessType=DOWNLOAD')
-  end
+  task download_csv: :environment do
+    puts 'Downloading CSV data...'
+    arcgis_path = '/api/records/1.0/download/?dataset=stormwater-drains'\
+      '&refine.owner=CITY-ROW&refine.status=EXISTING&refine.task=INLET'\
+      '&exclude.type=HEADWALL&exclude.type=END+SECTION'\
+      '&format=json'
+    uri = "https://opendurham.nc.gov#{arcgis_path}"
+    print "uri: #{uri}\n"
+    json_string = open(uri).read
+    json_data = JSON.parse(json_string)
+    output_csv = File.open("durham_drains.csv", "w")
+    output_csv.write("lon,lat,owner,watershed,type,form\n")
 
-  # move adoptions to closeby things
-  # useful for rectifying adoptions of inconsistencies in the dataset (things
-  # that are removed during scheduled import)
-  task move_close_deleted_adoptions: :environment do
-    require 'adoption_mover'
-
-    ENV['ADOPTION_DELETION_FROM'] || raise('$ADOPTION_DELETION_FROM required')
-    ENV['MAXIMUM_MOVEMENT_IN_FEET'] || raise('$MAXIMUM_MOVEMENT_IN_FEET required')
-
-    adoption_deletion_from = Time.zone.parse(ENV['ADOPTION_DELETION_FROM'])
-
-    moved_adoptions = AdoptionMover.move_close_deleted_adoptions(adoption_deletion_from, ENV['MAXIMUM_MOVEMENT_IN_FEET'])
-
-    CSV($stdout) do |csv|
-      csv << %w[from to]
-      moved_adoptions.each do |from, to|
-        csv << [from, to]
-      end
+    json_data.each do |d|
+      output_csv.write("#{d["fields"]["geo_point_2d"][1]},#{d["fields"]["geo_point_2d"][0]},#{d["fields"]["owner"]},#{d["fields"]["operationalarea"]},#{d["fields"]["type"]},#{d["fields"]["form"]}\n")
     end
+
+    output_csv.close
   end
 
-  task fetch_adopter_info: :environment do
-    ENV['CITY_IDS'] || raise('$CITY_IDS required')
+  task load_drains: :environment do
+    puts 'Loading drains...'
+    url = 'testcoo.csv'
+    csv_string = open(url).read
+    drains = CSV.parse(csv_string, headers: true)
+    puts "#{drains.size} Drains."
 
-    ids = ENV['CITY_IDS'].split(' ').map { |id| id.gsub!('N-', '') }
+    total = 0
+    drains.each_slice(1000) do |group|
+      updated = 0
+      created = 0
+      group.each do |drain|
+        thing_hash = {
+          name: drain['type'],
+          system_use_code: drain['type'],
+          lat: drain['lat'],
+          lng: drain['lon'],
+        }
+        
+        total += 1
+      end
 
-    Thing.unscoped.where(city_id: ids).each do |thing|
-      puts "N-#{thing.city_id} named '#{thing.display_name}' at #{thing.reverse_geocode.formatted_address} adopted by #{thing.user.name}, #{thing.user.email}"
+      print "updated/created: #{updated}/#{created} ... #{total}\n"
     end
   end
 end

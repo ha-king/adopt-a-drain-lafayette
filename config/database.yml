@@ -1,7 +1,7 @@
 development: &DEVELOPMENT
   adapter: postgresql
   user: <%= ENV['DB_USER'] || ENV['USER'] %>
-  database: adopt_a_thing_development
+  database: adopt_a_thing_development115
   host: <%= ENV['DB_HOST'] || 'localhost' %>
 
 # Warning: The database defined as "test" will be erased and
@@ -9,7 +9,7 @@ development: &DEVELOPMENT
 # Do not set this db to the same as development or production.
 test:
   <<: *DEVELOPMENT
-  database: adopt_a_thing_test
+  database: adopt_a_thing_test115
 
 staging: # read from DATABASE_URL
   adapter: postgresql
