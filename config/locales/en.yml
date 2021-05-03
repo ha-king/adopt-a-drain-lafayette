@@ -14,7 +14,7 @@ en:
     sign_in: "Sign in"
     sign_out: "Sign out"
     sign_up: "Sign up"
-    sign_up_or_in: "Register / Sign in"
+    sign_up_or_in: "CHANGED!"
     update: "Update"
   subjects:
     update_report: "%{title} import (%{deleted_adopted_count} adopted %{things} removed, %{created_count} %{things} added, %{deleted_unadopted_count} unadopted %{things} removed)"
@@ -37,7 +37,7 @@ en:
     thing: "drain"
     things: "drains"
     this_thing: "This %{thing}"
-    tagline: "What does it mean to adopt a drain?"
+    tagline: "A CHANGE!"
     tos: "By signing up, you agree to the %{tos}."
     voice_number: "415-555-1212"
     zip: "94015-2013"
@@ -45,7 +45,7 @@ en:
     password: "You need to sign in or sign up before continuing."
     not_found: "Could not find %{thing}."
   labels:
-    address: "Address, Neighborhood"
+    address: "LOOK AT THIS CHANGE"
     address_1: "Address Line 1"
     address_2: "Address Line 2"
     city: "City"
