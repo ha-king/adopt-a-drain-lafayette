@@ -5,7 +5,7 @@ namespace :data do
   require 'json'
   task load_drains: :environment do
     puts 'Loading drains...'
-    url = 'lafcoo-500.csv'
+    url = 'lafcoo.csv'
     csv_string = open(url).read
     drains = CSV.parse(csv_string, headers: true)
     puts "#{drains.size} Drains."
