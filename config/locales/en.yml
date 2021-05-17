@@ -14,7 +14,7 @@ en:
     sign_in: "Sign in"
     sign_out: "Sign out"
     sign_up: "Sign up"
-    sign_up_or_in: "CHANGED!"
+    sign_up_or_in: "MONDAY CHANGE BEHOLD!"
     update: "Update"
   subjects:
     update_report: "%{title} import (%{deleted_adopted_count} adopted %{things} removed, %{created_count} %{things} added, %{deleted_unadopted_count} unadopted %{things} removed)"
