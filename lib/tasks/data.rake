@@ -1,42 +1,30 @@
-# frozen_string_literal: true
-
 require 'rake'
-
 namespace :data do
-  task load_things: :environment do
-    require 'thing_importer'
-
-    ThingImporter.load('https://data.sfgov.org/api/views/jtgq-b7c5/rows.csv?accessType=DOWNLOAD')
-  end
-
-  # move adoptions to closeby things
-  # useful for rectifying adoptions of inconsistencies in the dataset (things
-  # that are removed during scheduled import)
-  task move_close_deleted_adoptions: :environment do
-    require 'adoption_mover'
-
-    ENV['ADOPTION_DELETION_FROM'] || raise('$ADOPTION_DELETION_FROM required')
-    ENV['MAXIMUM_MOVEMENT_IN_FEET'] || raise('$MAXIMUM_MOVEMENT_IN_FEET required')
-
-    adoption_deletion_from = Time.zone.parse(ENV['ADOPTION_DELETION_FROM'])
-
-    moved_adoptions = AdoptionMover.move_close_deleted_adoptions(adoption_deletion_from, ENV['MAXIMUM_MOVEMENT_IN_FEET'])
-
-    CSV($stdout) do |csv|
-      csv << %w[from to]
-      moved_adoptions.each do |from, to|
-        csv << [from, to]
+  require 'open-uri'
+  require 'csv'
+  require 'json'
+  task load_drains: :environment do
+    puts 'Loading drains...'
+    url = 'lafsorted.csv'
+    csv_string = open(url).read
+    drains = CSV.parse(csv_string, headers: true)
+    puts "#{drains.size} Drains."
+    total = 0
+    drains.each_slice(500) do |group|
+      updated = 0
+      created = 0
+      group.each do |drain|
+        Thing.where(city_id: group).first_or_initialize.tap do |thing|        
+          thing.name = "Some Drain #{total}"
+          thing.lat = drain['lat']
+          thing.lng = drain['lon']
+          thing.system_use_code = drain['type']
+          thing.priority = [true, false]
+          thing.save!
+          total += 1
+        end
       end
-    end
-  end
-
-  task fetch_adopter_info: :environment do
-    ENV['CITY_IDS'] || raise('$CITY_IDS required')
-
-    ids = ENV['CITY_IDS'].split(' ').map { |id| id.gsub!('N-', '') }
-
-    Thing.unscoped.where(city_id: ids).each do |thing|
-      puts "N-#{thing.city_id} named '#{thing.display_name}' at #{thing.reverse_geocode.formatted_address} adopted by #{thing.user.name}, #{thing.user.email}"
+      print "updated/created: #{updated}/#{created} ... #{total}\n"
     end
   end
 end

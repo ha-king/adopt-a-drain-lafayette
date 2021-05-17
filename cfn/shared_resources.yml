@@ -14,9 +14,11 @@ Parameters:
 
   GitHubRepo:
     Type: String
+    Default: adopt-a-drain-lafayette
 
   GitHubBranch:
     Type: String
+    Default: dev
 
   GitHubToken:
     Type: String
@@ -27,11 +29,12 @@ Parameters:
   RepositoryName:
     Description: Amazon ECR repository name
     Type: String
+    Default: adopt-a-drain-lafayette
 
   WorkshopName:
     Description: A workshop name that will be prefixed to resource names
     Type: String
-    Default: ecs-workshop
+    Default: adopt-a-drain-lafayette
 
 Resources:
 
