@@ -5,7 +5,7 @@ require File.expand_path('application', __dir__)
 
 ActionMailer::Base.smtp_settings = {
   address: 'smtp.sendgrid.net',
-  port: '25',
+  port: '587',
   authentication: :plain,
   user_name: 'apikey',
   password: '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',
