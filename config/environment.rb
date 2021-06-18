@@ -8,7 +8,7 @@ ActionMailer::Base.smtp_settings = {
   port: '587',
   authentication: :plain,
   user_name: 'apikey',
-  password: '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',
+  password: '-',
   domain: 'infascination.com',
   enable_starttls_auto: true,
 }
