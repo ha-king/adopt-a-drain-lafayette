@@ -30,7 +30,7 @@ class ThingImporterTest < ActiveSupport::TestCase
     deleted_thing = things(:thing_3)
     deleted_thing.destroy!
 
-    fake_url = 'http://sf-drain-data.org'
+    fake_url = 'http://adopt-a-drain.infascination.com'
     fake_response = [
       'PUC_Maximo_Asset_ID,Drain_Type,System_Use_Code,Location,PRIORITY_STATUS',
       'N-3,Catch Basin Drain,ABC,"POINT (-71.07 42.38)",1',
@@ -44,7 +44,7 @@ class ThingImporterTest < ActiveSupport::TestCase
 
     email = ActionMailer::Base.deliveries.last
     assert_equal email.to, [admin.email]
-    assert_equal email.subject, 'Adopt-a-Drain San Francisco import (1 adopted drains removed, 1 drains added, 7 unadopted drains removed)'
+    assert_equal email.subject, 'Adopt-a-Drain import (1 adopted drains removed, 1 drains added, 7 unadopted drains removed)'
     thing11.reload
     thing10.reload
 
