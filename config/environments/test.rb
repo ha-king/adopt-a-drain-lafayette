@@ -56,9 +56,9 @@ Rails.application.configure do
     address: 'smtp.sendgrid.net',
     port: '587',
     authentication: :plain,
-    user_name: 'apikey',
-    password: '-',
-    domain: 'infascination.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: ENV['SENDGRID_DOMAIN'],
   }
 end
 
@@ -66,7 +66,7 @@ ActionMailer::Base.smtp_settings = {
   address: 'smtp.sendgrid.net',
   port: '587',
   authentication: :plain,
-  user_name: 'apikey',
-  password: '-',
-  domain: 'infascination.com',
+  user_name: ENV['SENDGRID_USERNAME'],
+  password: ENV['SENDGRID_PASSWORD'],
+  domain: ENV['SENDGRID_DOMAIN'],
 }
