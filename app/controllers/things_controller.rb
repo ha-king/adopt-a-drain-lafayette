@@ -31,6 +31,8 @@ private
       ThingMailer.first_adoption_confirmation(thing).deliver_later
     when 2
       ThingMailer.second_adoption_confirmation(thing).deliver_later
+    when 3
+      ThingMailer.third_adoption_confirmation(thing).deliver_later
     end
   end
 

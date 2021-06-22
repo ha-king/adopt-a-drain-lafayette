@@ -83,7 +83,7 @@ class InfoWindowControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :success
     assert_select 'a', /This .* is special! Learn why./ do
-      assert_select '[href=?]', 'http://sfwater.org/index.aspx?page=399'
+      assert_select '[href=?]', 'http://adopt-a-drain.infascination.com'
     end
   end
 
