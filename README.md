@@ -3,7 +3,7 @@
 Claim responsibility for cleaning out a storm drain after it rains.
 
 ## Screenshot
-![Adopt-a-Drain](/adopt.png "Adopt-a-Drain")
+![Adopt-a-Drain](/screenshotcloseup.png "Adopt-a-Drain")
 
 ## Demo
 You can see a running version of the application at
