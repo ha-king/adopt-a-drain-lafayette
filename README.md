@@ -7,7 +7,7 @@ Claim responsibility for cleaning out a storm drain after it rains.
 
 ## Demo
 You can see a running version of the application at
-[http://adopt-a-drain.infascination.com/][demo].
+[https://adopt-a-drain.infascination.com/][demo].
 
 [demo]: http://adopt-a-drain.infascination.com/
 
