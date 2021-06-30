@@ -1,6 +1,5 @@
 Description: >
   Create ECS service and cluster resources for Adopt-a-Drain application.
-
 Parameters:
   RepositoryName:
     Description: Amazon ECR repository name
