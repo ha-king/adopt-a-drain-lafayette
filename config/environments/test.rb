@@ -12,7 +12,7 @@ Rails.application.configure do
 
   # asset host
   #config.action_controller.asset_host = "http://#{options[:Host]}:#{options[:Port]}"
-  config.action_controller.asset_host = "https://adopt-a-drain.infascination.com"
+  config.action_controller.asset_host = "https://adopt-a-drain-laf.infascination.com"
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Do not eager load code on boot.
