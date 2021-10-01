@@ -10,7 +10,7 @@ en:
     edit_profile: "Edit profile"
     email_password: "Reset my password"
     find: "Find %{thing}"
-    send_reminder: "Send reminder to maintain"
+    send_reminder: "Send reminder"
     sign_in: "Sign in"
     sign_out: "Sign out"
     sign_up: "Sign up"
