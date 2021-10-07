@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   # asset host
-  config.action_controller.asset_host = "https://adopt-a-drain.infascination.com"
+  config.action_controller.asset_host = ENV["DOMAIN_FULL_URL"]
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -70,7 +70,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = {host: 'adopt-a-drain.infascination.com'}
+  config.action_mailer.default_url_options = {host: ENV["DOMAIN_FULL_URL"]}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

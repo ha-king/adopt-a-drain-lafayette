@@ -12,7 +12,7 @@ Rails.application.configure do
 
   # asset host
   #config.action_controller.asset_host = "http://#{options[:Host]}:#{options[:Port]}"
-  config.action_controller.asset_host = "https://adopt-a-drain.infascination.com"
+  config.action_controller.asset_host = ENV["DOMAIN_FULL_URL"]
   config.action_mailer.asset_host = config.action_controller.asset_host
 
   # Do not eager load code on boot.
@@ -51,7 +51,7 @@ Rails.application.configure do
 
   # For Mailcatcher
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {address: 'adopt-a-drain.infascination.com', port: 587}
+  config.action_mailer.smtp_settings = {address: ENV["DOMAIN_FULL_URL"], port: 587}
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: '587',
