@@ -14,7 +14,7 @@ Parameters:
     Default: adopt-a-drain-lafayette-shared
   InstanceType:
     Type: String
-    Default: t3.medium
+    Default: t3.large
   SendgridPassword:
     Description: Password for Sendgrid email service.
     Type: String
@@ -28,19 +28,15 @@ Parameters:
   Domain:
     Description: The root domain value
     Type: String
-    Default: tutorials.infascination.com.
+    Default: infascination.com.
   Subdomain:
     Description: The subdomain value
     Type: String
-    Default: adopt-a-drain-lafayette.tutorials.infascination.com.
+    Default: adopt-a-drain.infascination.com.
   RubyMemory:
     Description: Memory value for the Ruby on Rails app
     Type: String
-    Default: 1900
-  PostgresMemory:
-    Description: Memory value for the PostgreSQL DB
-    Type: String
-    Default: 1900
+    Default: 4096
 
 Mappings:
   AWSRegionToAMI:
@@ -151,19 +147,18 @@ Resources:
               ContainerPath: /myapp
           PortMappings:
             - ContainerPort: 80
+            - ContainerPort: 5432
           LogConfiguration:
             LogDriver: awslogs
             Options:
               awslogs-group: !Ref CloudWatchLogsGroup
               awslogs-region: !Ref AWS::Region
               awslogs-stream-prefix: rails-app
-          Links:
-            - db
           Environment:
-            - Name: POSTGRES_HOST_AUTH_METHOD
-              Value: trust
+            - Name: PGPASSWORD 
+              Value: adoptadrain
             - Name: DB_HOST
-              Value: db
+              Value: adopt-psql.cjtizh8jjvj0.us-east-1.rds.amazonaws.com
             - Name:  DB_USER
               Value: postgres
             - Name: SENDGRID_USERNAME
@@ -174,22 +169,6 @@ Resources:
               Value: "infascination.com"
             - Name: RAILS_ENV
               Value: "test"
-        - Name: db
-          Image: postgres
-          Essential: true
-          Memory: !Ref PostgresMemory
-          Environment:
-            - Name: POSTGRES_HOST_AUTH_METHOD
-              Value: trust
-          PortMappings:
-            - ContainerPort: 5432
-          LogConfiguration:
-            LogDriver: awslogs
-            Options:
-              awslogs-group: !Ref CloudWatchLogsGroup
-              awslogs-region: !Ref AWS::Region
-              awslogs-stream-prefix: postgres
-
       Volumes:
         - Name: myapp
 
