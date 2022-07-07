@@ -1,6 +1,6 @@
 Description:
-  This template sets up the shared resources for the workshop, including a VPC
-  and a CodeDeploy application. Only one stack of this template should be
+  This template sets up the shared resources for the workshop, including a VPC,
+  CodePipeline and CodeBuild projects. Only one stack of this template should be
   necessary for a workshop.
 
 Parameters:
