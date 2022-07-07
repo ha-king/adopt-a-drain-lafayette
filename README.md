@@ -77,7 +77,7 @@ This application is deployed using AWS CloudFormation.
 
 | Order   |Stacks          |Deploy|
 |---------|----------------|------|
-| 1       |Shared Resources| <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=adopt-a-drain-shared&templateURL=https://infascination-public-virginia.s3.amazonaws.com/shared_resources.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
+| 1       |Shared Resources| <a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=adopt-a-drain-shared&templateURL=https://infascination-public-virginia.s3.amazonaws.com/shared-resources.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
 | 2       |Application     |<a href="https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=adopt-a-drain-app&templateURL=https://infascination-public-virginia.s3.amazonaws.com/ecs-service-cluster.yml" target="_blank">![Launch](./img/launch-stack.png?raw=true "Launch")</a>|
 ---
 #### AWS-CLI Deployment scenarios:
@@ -88,7 +88,7 @@ This application will be deployed on EC2 Autoscaling Group nodes working behind 
 
 Create shared resources:
 ```
-aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cfn/shared_resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="adopt-a-drain"
+aws cloudformation deploy --stack-name adopt-a-drain-shared --template-file cfn/shared-resources.yml --capabilities CAPABILITY_NAMED_IAM --parameter-overrides WorkshopName="adopt-a-drain"
 ```
 
 Create ECS resources:

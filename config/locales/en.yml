@@ -5,7 +5,7 @@ en:
     abandon: "Abandon this %{thing}"
     adopt: "Adopt!"
     back: "Back"
-    change_password: "Change my password"
+    change_password: "Update my password"
     close: "Close"
     edit_profile: "Edit profile"
     email_password: "Reset my password"

@@ -37,39 +37,6 @@ Parameters:
     Default: adopt-a-drain-lafayette
 
 Resources:
-
-  CodeDeployApplication:
-    Type: "AWS::CodeDeploy::Application"
-
-  DeploymentBucket:
-    Type: "AWS::S3::Bucket"
-
-  CodeDeployRole:
-    Type: "AWS::IAM::Role"
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          -
-            Effect: "Allow"
-            Principal:
-              Service:
-                - "codedeploy.amazonaws.com"
-            Action:
-              - "sts:AssumeRole"
-      Policies:
-        -
-          PolicyName: allow-autoscaling
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              -
-                Effect: Allow
-                Action:
-                  - ec2:*
-                  - autoscaling:*
-                Resource: "*"
-
   InstanceRole:
     Type: "AWS::IAM::Role"
     Properties:
@@ -81,7 +48,6 @@ Resources:
             Principal:
               Service:
                 - "ec2.amazonaws.com"
-                - "codedeploy.amazonaws.com"
             Action:
               - "sts:AssumeRole"
       Policies:
@@ -95,19 +61,6 @@ Resources:
                 Action: "s3:getObject"
                 Resource:
                   - !Sub arn:aws:s3:::*codepipeline*
-        -
-          PolicyName: "allow-logging"
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              -
-                Effect: "Allow"
-                Action:
-                  - "logs:CreateLogGroup"
-                  - "logs:CreateLogStream"
-                  - "logs:PutLogEvents"
-                  - "logs:DescribeLogStreams"
-                Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:${CodeDeployApplication}/*
 
   InstanceProfile:
     Type: "AWS::IAM::InstanceProfile"
@@ -307,6 +260,10 @@ Resources:
               - "ecr:CompleteLayerUpload"
               - "ecr:ListImages"
 
+  ##
+  ## Pipeline-as-code
+  ##
+
   ArtifactBucket:
     Type: AWS::S3::Bucket
 
@@ -491,29 +448,6 @@ Outputs:
     Value: !Ref WorkshopName
     Export:
       Name: !Join [ ":", [ !Ref "AWS::StackName", WorkshopName ] ]
-
-  CodeDeployApplication:
-    Description: A reference to the created CodeDeploy application
-    Value: !Ref CodeDeployApplication
-    Export:
-      Name: !Join [ ":", [ !Ref "AWS::StackName", CodeDeployApplication ] ]
-
-  CodeDeployUrl:
-    Description: The AWS console URL for the CodeDeploy application
-    Value:
-      Fn::Sub: 'https://${AWS::Region}.console.aws.amazon.com/codedeploy/home?region=${AWS::Region}#/applications/${CodeDeployApplication}'
-
-  CodeDeployRole:
-    Description: A reference to the created CodeDeploy role
-    Value: !GetAtt CodeDeployRole.Arn
-    Export:
-      Name: !Join [ ":", [ !Ref "AWS::StackName", CodeDeployRole ] ]
-
-  DeploymentBucket:
-    Description: A reference to the created deployment bucket
-    Value: !Ref DeploymentBucket
-    Export:
-      Name: !Join [ ":", [ !Ref "AWS::StackName", DeploymentBucket ] ]
 
   VPC:
     Description: A reference to the created VPC
